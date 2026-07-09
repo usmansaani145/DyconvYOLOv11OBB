@@ -2,6 +2,8 @@
 
 **Paper:** DyConv-YOLOv11: A Unified Benchmark and Systematic Module Evaluation for Oriented Ship Detection in Aerial Imagery  
 **Journal:** Knowledge-Based Systems (Q1, Elsevier) — submitted   
+**Code:** [github.com/usmansaani145/DyconvYOLOv11OBB](https://github.com/usmansaani145/DyconvYOLOv11OBB)  
+**Dataset:** [DOTA-ShipBench on Hugging Face](https://huggingface.co/datasets/usmansaani145/DOTA-ShipBench)  
 **Authors:** Rana Muhammad Usman, Faizan Faiz, Ali Javaid, Muhammad Sajid, Feng Zhao (*corresponding*)
 
 ---
@@ -37,7 +39,7 @@ Published numbers are archived in `results/all_models_stats.json`.
 ## Repository Structure
 
 ```
-shipobb_project/
+DyconvYOLOv11OBB/
 ├── configs/              # paths.example.yaml — optional overrides
 ├── dataset/              # Downloaded from Hugging Face (gitignored; see below)
 │   ├── train/            # 6624 SAHI-tiled training images
@@ -114,8 +116,8 @@ yolo26m-obb.pt
 ### Option A — Conda (recommended)
 
 ```bash
-git clone https://github.com/YOUR_ORG/shipobb.git
-cd shipobb
+git clone https://github.com/usmansaani145/DyconvYOLOv11OBB.git
+cd DyconvYOLOv11OBB
 conda env create -f environment.yml
 conda activate shipobb
 bash scripts/download_dataset.sh   # fetch DOTA-ShipBench from Hugging Face
@@ -142,8 +144,8 @@ mim install mmrotate==0.3.4
 ## Quick Start (fully self-contained)
 
 ```bash
-git clone https://github.com/YOUR_ORG/shipobb.git
-cd shipobb
+git clone https://github.com/usmansaani145/DyconvYOLOv11OBB.git
+cd DyconvYOLOv11OBB
 source scripts/env.sh          # sets all repo-relative paths
 conda env create -f environment.yml && conda activate shipobb
 # OR: pip install -r requirements.txt
@@ -337,7 +339,8 @@ We acknowledge the support of the GPU cluster built by the MCC Lab of the Inform
   author  = {Usman, Rana Muhammad and Faiz, Faizan and Javaid, Ali and Sajid, Muhammad and Zhao, Feng},
   journal = {Knowledge-Based Systems},
   year    = {2026},
-  note    = {submitted}
+  note    = {submitted},
+  url     = {https://github.com/usmansaani145/DyconvYOLOv11OBB}
 }
 ```
 
