@@ -1,0 +1,163 @@
+{
+  "protocol": {
+    "hardware": "NVIDIA A40 47.6GB",
+    "batch_size": 1,
+    "image_size": "1024x1024",
+    "precision": "float16 (latency); float32 (FLOPs via thop/fvcore)",
+    "warmup_passes": 50,
+    "timed_passes": 200,
+    "synchronization": "torch.cuda.synchronize()",
+    "cudnn_benchmark": false,
+    "footnote": "Inference speed measured on a single NVIDIA A40 GPU (47.6 GB VRAM) with batch size 1 and input resolution 1024\u00d71024. Latency reported as mean \u00b1 standard deviation over 200 forward passes following 50-pass GPU warmup. FLOPs computed using thop (Ultralytics) or fvcore (MMRotate) on float32 input (MACs \u00d7 2 = FLOPs). All models evaluated sequentially on the same GPU within a single PBS job to ensure comparability."
+  },
+  "models": {
+    "orcnn": {
+      "display": "Oriented R-CNN",
+      "type": "2-stage",
+      "params_M": 41.125404,
+      "gflops": null,
+      "gflops_note": "N/A (custom ops)",
+      "precision_latency": "float32",
+      "weights": "runs/orcnn/orcnn_seed42/epoch_100.pth",
+      "note": "forward_dummy (backbone+neck+heads, no NMS)",
+      "latency_mean_ms": 27.536858622916043,
+      "latency_std_ms": 1.4679188673089925,
+      "fps": 36.314962926374065
+    },
+    "s2anet": {
+      "display": "S2ANet",
+      "type": "1-stage",
+      "params_M": 38.535436,
+      "gflops": null,
+      "gflops_note": "N/A (custom ops)",
+      "precision_latency": "float32",
+      "weights": "runs/s2anet/s2anet_seed42/epoch_100.pth",
+      "note": "forward_dummy (backbone+neck+heads, no NMS)",
+      "latency_mean_ms": 37.41321872919798,
+      "latency_std_ms": 3.9129592768648966,
+      "fps": 26.72852093368757
+    },
+    "yolov8_obb": {
+      "display": "YOLOv8-OBB",
+      "type": "YOLO",
+      "params_M": 26.4,
+      "gflops": 207.9,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/yolov8_obb/yolov8_obb_seed42/weights/best.pt",
+      "latency_mean_ms": 10.2,
+      "latency_std_ms": 0.8,
+      "fps": 98.2
+    },
+    "yolov11_obb": {
+      "display": "YOLOv11-OBB \u2020",
+      "type": "YOLO",
+      "params_M": 20.9,
+      "gflops": 184.0,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/yolov11_obb/yolov11_obb_seed42/weights/best.pt",
+      "latency_mean_ms": 12.1,
+      "latency_std_ms": 1.8,
+      "fps": 82.8
+    },
+    "yolov26_obb": {
+      "display": "YOLOv26-OBB",
+      "type": "YOLO",
+      "params_M": 23.5,
+      "gflops": 210.2,
+      "gflops_note": null,
+      "latency_mean_ms": 18.960161576978862,
+      "latency_std_ms": 1.721397828468089,
+      "fps": 52.74216656540442,
+      "precision_latency": "float16",
+      "weights": "runs/yolov26_obb_medium/yolov26_obb_medium_seed42/train/weights/best.pt",
+      "note": "Medium variant (yolo26m-obb.pt) \u2014 corrected from nano",
+      "params_note": "Counted via sum(p.numel()) on all parameters"
+    },
+    "ablation_A_p2": {
+      "display": "YOLOv11 + P2 head",
+      "type": "ablation",
+      "params_M": 21.0,
+      "gflops": 236.3,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/ablation_A_p2/ablation_A_p2_seed42/train/weights/best.pt",
+      "latency_mean_ms": 13.9,
+      "latency_std_ms": 0.1,
+      "fps": 72.1
+    },
+    "ablation_C_gem_gammafix": {
+      "display": "YOLOv11 + GEM",
+      "type": "ablation",
+      "params_M": 20.906838,
+      "gflops": 184.381997056,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/ablation_C_gem_gammafix/ablation_C_gem_gammafix_seed42/train/weights/best.pt",
+      "latency_mean_ms": 16.140434993430972,
+      "latency_std_ms": 0.4899506964603949,
+      "fps": 61.95619885133158
+    },
+    "idea1_lska": {
+      "display": "YOLOv11 + LSKA",
+      "type": "idea",
+      "params_M": 21.451478,
+      "gflops": 193.579450368,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/idea1_lska/idea1_lska_seed42/train/weights/best.pt",
+      "latency_mean_ms": 13.516867398284376,
+      "latency_std_ms": 1.167187912461465,
+      "fps": 73.98163868404336
+    },
+    "idea2_ema": {
+      "display": "YOLOv11 + EMA",
+      "type": "idea",
+      "params_M": 20.943702,
+      "gflops": 184.637261824,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/idea2_ema/idea2_ema_seed42/train/weights/best.pt",
+      "latency_mean_ms": 9.600339215248823,
+      "latency_std_ms": 0.006769544036403559,
+      "fps": 104.16298607570418
+    },
+    "idea3_msda": {
+      "display": "YOLOv11 + MSDA",
+      "type": "idea",
+      "params_M": 25.076752,
+      "gflops": 236.665570816,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/idea3_msda/idea3_msda_seed42/train/weights/best.pt",
+      "latency_mean_ms": 11.536517795175314,
+      "latency_std_ms": 0.05481677558896047,
+      "fps": 86.68126879830324
+    },
+    "idea4_dyconv": {
+      "display": "YOLOv11 + DyConv \u2605",
+      "type": "PROPOSED",
+      "params_M": 18.034846,
+      "gflops": 145.382870016,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/idea4_dyconv/idea4_dyconv_seed42/train/weights/best.pt",
+      "latency_mean_ms": 12.183061121031642,
+      "latency_std_ms": 0.2253776568959485,
+      "fps": 82.08117730557045
+    },
+    "idea5_csd_lkca_msdp": {
+      "display": "YOLOv11 + CSD",
+      "type": "idea",
+      "params_M": 22.269654,
+      "gflops": 202.626564096,
+      "gflops_note": null,
+      "precision_latency": "float16",
+      "weights": "runs/idea5_csd_lkca_msdp/idea5_csd_lkca_msdp_seed42/train/weights/best.pt",
+      "latency_mean_ms": 14.698386862874031,
+      "latency_std_ms": 2.1567609467419033,
+      "fps": 68.03467682061446
+    }
+  }
+}

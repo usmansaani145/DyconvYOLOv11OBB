@@ -1,0 +1,42 @@
+{
+  "protocol": {
+    "hardware": "NVIDIA A40 47.6GB",
+    "batch_size": 1,
+    "image_size": "1024x1024",
+    "precision": "float16 (latency); float32 (FLOPs via thop/fvcore)",
+    "warmup_passes": 50,
+    "timed_passes": 200,
+    "synchronization": "torch.cuda.synchronize()",
+    "cudnn_benchmark": false,
+    "footnote": "Inference speed measured on a single NVIDIA A40 GPU (47.6 GB VRAM) with batch size 1 and input resolution 1024\u00d71024. Latency reported as mean \u00b1 standard deviation over 200 forward passes following 50-pass GPU warmup. FLOPs computed using thop (Ultralytics) or fvcore (MMRotate) on float32 input (MACs \u00d7 2 = FLOPs). All models evaluated sequentially on the same GPU within a single PBS job to ensure comparability."
+  },
+  "group": "mmrotate",
+  "models": {
+    "orcnn": {
+      "display": "Oriented R-CNN",
+      "type": "2-stage",
+      "params_M": 41.125404,
+      "gflops": null,
+      "gflops_note": "N/A (custom ops)",
+      "precision_latency": "float32",
+      "weights": "runs/orcnn/orcnn_seed42/epoch_100.pth",
+      "note": "forward_dummy (backbone+neck+heads, no NMS)",
+      "latency_mean_ms": 27.536858622916043,
+      "latency_std_ms": 1.4679188673089925,
+      "fps": 36.314962926374065
+    },
+    "s2anet": {
+      "display": "S2ANet",
+      "type": "1-stage",
+      "params_M": 38.535436,
+      "gflops": null,
+      "gflops_note": "N/A (custom ops)",
+      "precision_latency": "float32",
+      "weights": "runs/s2anet/s2anet_seed42/epoch_100.pth",
+      "note": "forward_dummy (backbone+neck+heads, no NMS)",
+      "latency_mean_ms": 37.41321872919798,
+      "latency_std_ms": 3.9129592768648966,
+      "fps": 26.72852093368757
+    }
+  }
+}

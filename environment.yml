@@ -1,0 +1,21 @@
+name: shipobb
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pytorch=2.1.0
+  - torchvision=0.16.0
+  - pytorch-cuda=11.8
+  - pip
+  - pip:
+    - ultralytics==8.3.0
+    - sahi==0.11.15
+    - pycocotools==2.0.7
+    - opencv-python==4.8.0.76
+    - pandas==2.0.3
+    - tqdm==4.65.0
+    - huggingface_hub>=0.23.0
+    - PyYAML==6.0.1

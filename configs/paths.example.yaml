@@ -1,0 +1,16 @@
+# All paths are relative to the repository root after cloning.
+# Download the dataset first: bash scripts/download_dataset.sh
+# Hugging Face: https://huggingface.co/datasets/usmansaani145/DOTA-ShipBench
+
+data_root: dataset
+runs_root: runs
+results_root: results
+dota_test_root: dataset/dota_test
+hrsc2016_root: dataset/hrsc2016
+
+pretrained:
+  yolo11m_obb: pretrained/yolo11m-obb.pt
+  yolov8m_obb: pretrained/yolov8m-obb.pt
+  yolo26n_obb: pretrained/yolo26n-obb.pt
+
+seeds: [42, 123, 456]
